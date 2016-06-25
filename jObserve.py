@@ -1,7 +1,9 @@
+import os
 from datetime import datetime, timedelta
 
 import numpy as np
 
+from matplotlib.font_manager import FontProperties
 import matplotlib.pyplot as mpl
 from matplotlib import dates
 from matplotlib.widgets import RadioButtons, CheckButtons
@@ -11,11 +13,11 @@ from ephem.cities import lookup
 import ephem
 mpl.ion()
 
-computerModern=matplotlib.font_manager.FontProperties(size=20,fname=__file__+'/cmunrm.ttf')
-
+this_dir=os.path.dirname(__file__)
 def compModern(size=20):
-    computerModern=matplotlib.font_manager.FontProperties(size=size,fname='/home/%s/.fonts/cm-unicode-0.7.0/cmunrm.ttf' % username)
-        return computerModern
+    computerModern = FontProperties(size=size,
+                                    fname=this_dir+'/cmunrm.ttf')
+    return computerModern
 
 custom_query=Simbad()
 custom_query.add_votable_fields('id(HIP|1)','coo(s)','flux(V)')
